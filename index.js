@@ -10,17 +10,14 @@ app.listen(port, () => {
 
 // GET
 app.get('*', (req, res) => {
-    let quranVerse = '"Or were they created by nothing or were they the creators [of themselves]" [<a href="https://quran.com/en/at-tur/35">Quran 52:35 </a>]';
-    let text =
-        '<h2 style="text-align: center;">The below text is randomly generated, try to find any meaningful paragraph, sentence or even a word. ' +
-        'If you can\'t, if randomness can\'t produce a meaningful word, how would it produce the whole universe?</h2> <br>' +
-        '<h4 style="text-align: center;">' + quranVerse + '</h4><br>';
-        '<p style="text-align: center;">If you want to argue that the text size is not enough, feel free</p><br>';
-
-    text += getRandomText(textLength);
-
-
-    res.send(`${text}`);
+    const quranVerse = '"Or were they created by nothing or were they the creators [of themselves]" [<a href="https://quran.com/en/at-tur/35">Quran 52:35</a>]';
+    const title = `
+        <h2 style="text-align: center;">The below text is randomly generated, try to find any meaningful paragraph, sentence or even a word.</h2>
+        <h4 style="text-align: center;">${quranVerse}</h4>
+        <p style="text-align: center;">If you want to argue that the text size is not enough, feel free to change the text size and explore the source code <a href="https://github.com/youseftcg/IsUniverseRandom">here</a></p>
+    `;
+    const randomText = getRandomText(textLength);
+    res.send(`${title}<br>${randomText}`);
 });
 
 
